@@ -1,0 +1,152 @@
+public class  linkedList {
+
+//node class
+    public static class Node{
+        int data;
+        Node next;
+        int size;
+        Node(int data){
+            this.data = data;
+            this.size=0;
+        }
+    }
+
+public static class linkedListInner{
+        Node head=null;
+        Node tail=null;
+
+    //display
+    void display(Node head){
+        Node temp= head;
+        while(temp!=null){
+            System.out.println(temp.data+" ");
+            temp=temp.next;
+        }
+    }
+    
+
+
+//inset at first if no linked list is present before
+
+void insetAtFirst(int data){
+    Node node = new Node(29);
+    node.next= head;
+    head= node;
+
+    if(tail==null){
+        head=tail=node;
+    }
+    return;
+}
+
+//insertion
+void insertion (Node head,int data){
+    Node temp= new Node(20);
+    Node tail=null;
+
+    if(head==null){
+        head=temp;
+        tail=temp;
+    }
+    else{
+        temp.next=head;
+        head=temp;
+    }
+}
+
+//insertion at end
+void insertend(int data){
+    Node temp= new Node(data);
+    if(head==null){
+        insetAtFirst(data);
+    }
+    else{
+        tail.next=temp;
+        tail=temp;
+    }
+}
+
+//insertion at any position
+void insertanyposition(int pos,int data){
+    Node temp=new Node(data);
+    Node temp1=head;
+    for(int i=0;i<pos-1;i++){
+        temp1=temp1.next;
+    }
+    temp.next=temp1.next;
+    temp1.next=temp;
+
+}
+
+//deletion of an element at any position
+void deleteAtposition(int pos){
+    Node temp=head;
+    for(int i=0;i<pos-1;i++){
+        temp=temp.next;
+    }
+    temp.next=temp.next.next;
+}
+
+//deletion of an element at begining 
+void deletionAtBeginging(){
+    if(head==null){
+        System.out.println("list is empty");
+        return;
+    }
+    head=head.next;
+}
+
+//deletion of an element at end
+void deletion(){
+    if(head==null){
+        System.out.println("List is Empty");
+        return;
+    }
+    if(head.next==null){
+        head=null;
+        return;
+    }
+    Node temp= head;
+
+    while (temp.next.next!=null) {
+        temp=temp.next;
+    }
+    temp.next=null;
+
+}
+
+} 
+
+public static void main(String[] args) {
+
+    Node a=new Node(10);
+    Node b=new Node(20);
+    Node c=new Node(30);
+    Node d=new Node(40);
+    Node e=new Node(50);
+    Node f=new Node(60);
+
+    a.next=b;
+    b.next=c;
+    c.next=d;
+    d.next=e;
+    e.next=f;
+    
+
+
+    linkedListInner ll= new linkedListInner();
+    ll.head = a;    
+    ll.tail = f;
+   // ll.display(a);
+  
+    
+    // ll.insertanyposition(3, 45);
+    // ll.display(a);
+
+     ll.deleteAtposition(2);
+     ll.display(a);
+
+     
+    
+}    
+}
