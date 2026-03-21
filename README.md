@@ -18,7 +18,6 @@ Before running the programs, ensure that you have:
   ```bash
   java -version
   ```
-
 * A terminal or command prompt (Windows, macOS, or Linux).
 
 * Git (optional, for cloning the repository).
